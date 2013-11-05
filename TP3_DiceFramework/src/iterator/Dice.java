@@ -17,16 +17,16 @@ package iterator;
 public class Dice {
 
     /**
-     * Le nombre de faces du de
+     * Le nombre de faces du dé
      */
     private int numFaces;
     /**
-     * La face active du de.
+     * La face active du dé.
      */
     private int activeFace;
     /**
      * Constante qui agit comme etant la valeur minimum que peut
-     * avoir une face d'un de.
+     * avoir une face d'un dé.
      */
     private final int MIN = 1;
 
@@ -37,11 +37,11 @@ public class Dice {
     public Dice() {}
 
     /**
-     * Constructeur par copie d'attibut.<br/>
+     * Constructeur par copie d'attribut.<br/>
      * On lui envoie en parametres le nombre de face desire et
      * on lui assigne 1 comme la face actuelle
      *
-     * @param numFaces   le nombre de faces desirees pour le de.
+     * @param numFaces   le nombre de faces desirees pour le dé.
      */
     public Dice(int numFaces) {
         this.numFaces = numFaces;
@@ -58,7 +58,7 @@ public class Dice {
         // La fonction Math.floor retourne un chiffre aleatoire entre 0 et 1 qui
         // est multiplie par 6 et ensuite additionne a MIN (qui est egale a 1).
         // En arrondissant, ceci permet donc de generer une valeur aleatoire entre 1 et
-        // la valeur maximale du nombre de face du de.
+        // la valeur maximale du nombre de face du dé.
         activeFace = (int) Math.floor(Math.random()* (numFaces) +
                 MIN);
 

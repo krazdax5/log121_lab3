@@ -17,7 +17,6 @@ public class DiceTest {
 
         int resultat = testDice.roll();
 
-        assert (resultat <=6 && resultat >=1);
-
+        assert (resultat <= 6 && resultat >= 1);
     }
 }
