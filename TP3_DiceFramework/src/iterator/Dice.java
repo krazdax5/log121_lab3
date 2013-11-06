@@ -14,7 +14,7 @@ package iterator;
  *
  *
  */
-public class Dice {
+public class Dice implements Comparable<Dice>{
 
     /**
      * Le nombre de faces du dé
@@ -63,6 +63,41 @@ public class Dice {
                 MIN);
 
         return activeFace;
+    }
+
+    /**
+     * Accesseur de la face active du d&eacute;
+     * @return  le num&eacute;ro de la face active du d&eacute;
+     */
+    public int getActiveFace() {
+        return activeFace;
+    }
+
+
+    /**
+     * Methode qui sera utilise que lors des tests unitaires a supprimer apres
+     */
+    public void setActiveFace(int activeFace) {
+        this.activeFace = activeFace;
+    }
+
+    /**
+     * Methode CompareTo qui permet de comparer la face active du d&eacute; avec
+     * cellle du d&eacute; que l'on envoie en parametre.<br/>
+     * Si la face active du d&eacute; est plus grand, on retourne 1.<br/>
+     * Si la face active du d&eacute; est plus petit, on retourne -1.<br/>
+     * Si la face active des d&eacute;s est identique, on retourne 0.<br/>
+     *
+     * @param diceToCompare Le d&eacute; que l'on veut comparer
+     * @return  -1, 0, 1 dependament de la face active du d&eacute; envoye en parametre
+     */
+    public int compareTo(Dice diceToCompare) {
+        if(this.activeFace > diceToCompare.getActiveFace())
+            return 1;
+        else if(this.activeFace < diceToCompare.getActiveFace())
+            return (-1);
+        else
+            return 0;
     }
 
 }
