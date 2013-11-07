@@ -1,6 +1,6 @@
 package test;
 
-import iterator.Player;
+import bfframework.Player;
 import org.junit.Test;
 
 /**

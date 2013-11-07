@@ -1,4 +1,4 @@
-package iterator;
+package bfframework;
 
 /**
  * Classe joueur

@@ -1,6 +1,6 @@
 package test;
 
-import iterator.Dice;
+import bfframework.Dice;
 import org.junit.Test;
 
 /**
