@@ -1,10 +1,10 @@
-package iterator;
+package bfframework;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
 
 /**
- * Classe iterator.DiceManager
+ * Classe bfframework.DiceManager
  *
  * Classe qui permet la gestion des des(dices)
  *
