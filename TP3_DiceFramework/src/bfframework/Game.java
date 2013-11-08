@@ -16,12 +16,12 @@ public abstract class Game {
     private Rules rules;
 
     /**
-     * Constructeur d'un jeu.
+     * Instancie les joueurs et les dés sans démarrer la partie.
      * @param numPlayers Le nombre de joueurs
      * @param numDices Le nombre de dés
      * @param numFacesPerDice Le nombre de faces par dé
      */
-    public Game(int numPlayers, int numDices, int numFacesPerDice){
+    public void createGame(int numPlayers, int numDices, int numFacesPerDice){
 
     }
 
