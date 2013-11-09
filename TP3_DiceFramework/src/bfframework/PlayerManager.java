@@ -1,10 +1,6 @@
-<<<<<<< HEAD:TP3_DiceFramework/src/iterator/PlayerManager.java
-package iterator;
+package bfframework;
 import java.util.LinkedList;
 import java.util.ListIterator;
-=======
-package bfframework;
->>>>>>> 07735627f413ffce2a4197852f78b5d2c2c79ee6:TP3_DiceFramework/src/bfframework/PlayerManager.java
 
 /**
  * Classe bfframework.PlayerManager

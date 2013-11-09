@@ -15,7 +15,12 @@ import java.util.ListIterator;
  */
 public class DiceManager {
 
-    private ArrayList <Dice> dicesList;
+    private ArrayList<Dice> dicesList;
+
+    public DiceManager(){
+        dicesList = new ArrayList<Dice>();
+    }
+
 
     /**
      * Methode qui permet d'ajouter un de dans la liste
