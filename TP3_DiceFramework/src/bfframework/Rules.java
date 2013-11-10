@@ -1,7 +1,7 @@
 package bfframework;
 
 /**
- * Interface bfframework.Rules
+ * Interface des règles du jeu.
  *
  * @author Mathieu Lachance
  * 2013-11-01 : Creation de la classe

@@ -1,4 +1,9 @@
-package bfframework;
+package buncoplus;
+
+import bfframework.AbstractGame;
+import bfframework.Dice;
+import bfframework.Player;
+import bfframework.Rules;
 
 /**
  * Classe qui implemente l'interface Rules pour les regles Bunco+
@@ -9,7 +14,7 @@ package bfframework;
  */
 
 
-public class MyRules implements Rules{
+public class MyRules implements Rules {
 
     private Dice dice1;
     private Dice dice2;

@@ -45,12 +45,11 @@ public class PlayerManager {
      */
     public Player nextPlayer(){
 
-        ListIterator <Player> it = playersList.listIterator();
-        if(it.hasNext()){
-            return it.next();
-        } else return playersList.peekLast();
-
-
+        ListIterator <Player> playerListIterator = playersList.listIterator();
+        if(playerListIterator.hasNext())
+            return playerListIterator.next();
+        else
+            return playersList.peekLast();
     }
 
 }
