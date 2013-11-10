@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 import bfframework.Player;
 import org.junit.Test;
