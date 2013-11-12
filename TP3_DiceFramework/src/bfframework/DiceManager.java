@@ -16,6 +16,7 @@ import java.util.ListIterator;
 public class DiceManager {
 
     private ArrayList<Dice> dicesList;
+    private ListIterator<Dice> diceIterator;
 
     public DiceManager(){
         dicesList = new ArrayList<Dice>();
@@ -29,6 +30,7 @@ public class DiceManager {
      */
     public Dice addDice (Dice diceToAdd){
         dicesList.add(diceToAdd);
+        diceIterator = dicesList.listIterator();
         return diceToAdd;
     }
 
@@ -40,6 +42,7 @@ public class DiceManager {
      */
     public Dice removeDice (Dice diceToRemove){
         dicesList.remove(diceToRemove);
+        diceIterator = dicesList.listIterator();
         return diceToRemove;
     }
 
@@ -50,13 +53,26 @@ public class DiceManager {
      */
     public Dice nextDice(){
 
-        ListIterator <Dice> it = dicesList.listIterator();
-
-        if(it.hasNext())
-            return it.next();
+        if(diceIterator.hasNext())
+            return diceIterator.next();
         else
-            return it.previous();
+            return null;
 
     }
+
+
+    public Dice getDice(int position) {
+        if(!dicesList.isEmpty())
+            return dicesList.get(position);
+        else return null;
+    }
+
+
+    public void rollAllDices() {
+        for(int i = 0; i < dicesList.size(); i++) {
+            dicesList.get(i).roll();
+        }
+    }
+
 
 }
