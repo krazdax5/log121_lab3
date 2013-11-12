@@ -17,6 +17,7 @@ import java.util.ListIterator;
  * 2013-11-08 : Ajout des methodes
  * @author Mathieu Lachance LACM14059305
  * 2013-11-11 : Correction de certaines methodes et ajout de getPlayer et getFirstPlayer.
+ *
  */
 public class PlayerManager {
 

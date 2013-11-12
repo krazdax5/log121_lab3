@@ -24,46 +24,25 @@ public abstract class Game {
      * @param numDices Le nombre de dés
      * @param numFacesPerDice Le nombre de faces par dé
      */
-    public abstract void createGame(int numPlayers, int numDices, int numFacesPerDice /*, Rules rules */);
-//    {
-//        playerManager = new PlayerManager();
-//        diceManager = new DiceManager();
-//
-//        while (numPlayers > 0){
-//            playerManager.addPlayer(new Player());
-//            numPlayers--;
-//        }
-//
-//        while (numDices > 0){
-//            diceManager.addDice(new Dice(numFacesPerDice));
-//            numDices--;
-//        }
-//
-//        this.rules = rules;
-//        this.rules = new Rules();
-//        gameState = GameStates.CREATED;
-//    }
+    public abstract void createGame(int numPlayers, int numDices, int numFacesPerDice);
 
     /**
      * Calcule le pointage de la ronde.
      * @return Le pointage de la ronde.
      */
     public abstract int calculateScoreRound(Player activePlayer);
-//    {
-//        return rules.calculateScore();
-//    }
 
     /**
      * Joue la ronde pour tous les joueurs.
      */
     public abstract void playRound();
-//    {
-//        Player playingPlayer = playerManager.nextPlayer();
-//        rules.playRound();
-//    }
 
     /**
-     * Commence la partie.
+     * Commence la partie
+     *
+     * @param numPlayers        Le nombre de joueurs
+     * @param numDices          Le nombre de d&eacute;s
+     * @param numFacesPerDice   Le nombre de faces par d&eacute;s
      */
     public void startGame(int numPlayers, int numDices, int numFacesPerDice) {
         if(gameState == GameStates.EARLY)
@@ -80,7 +59,17 @@ public abstract class Game {
      * @return Valeur nulle si non trouvé, le joueur si trouvé.
      */
     public abstract Player findWinner();
-//    {
-//        return rules.findWinner();
-//    }
+
+    /**
+     * Instancie les d&eacute;s d'un jeu de d&eacutes;s
+     * @param numDices      Le nombre de d&eacutes;s
+     * @param numberOfFaces Le nombre de face par d&eacute;s
+     */
+    public abstract void createDices(int numDices, int numberOfFaces);
+
+    /**
+     * Instancie les joueurs d'un jeu de d&eacute;s
+     * @param numPlayers    Le nombre de joueurs
+     */
+    public abstract void createPlayer(int numPlayers);
 }

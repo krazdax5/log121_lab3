@@ -24,20 +24,12 @@ public class BuncoPlus extends Game{
         diceManager = new DiceManager();
 
         this.numPlayers = numPlayers;
+
         // Le nombre de rondes est egal au nombre de faces qu'ont les des.
         this.numRounds = numFacesPerDice;
 
-
-        while (numPlayers > 0){
-            playerManager.addPlayer(new Player());
-            numPlayers--;
-        }
-
-        while (numDices > 0){
-            diceManager.addDice(new Dice(numFacesPerDice));
-            numDices--;
-        }
-
+        createDices(numDices, numFacesPerDice);
+        createPlayer(numPlayers);
 
         this.rules = new MyRules();
 
@@ -86,6 +78,22 @@ public class BuncoPlus extends Game{
             }
 
         return null;
+    }
+
+    @Override
+    public void createDices(int numDices, int numFacesPerDice) {
+        while (numDices > 0){
+            diceManager.addDice(new Dice(numFacesPerDice));
+            numDices--;
+        }
+    }
+
+    @Override
+    public void createPlayer(int numPlayers) {
+        while (numPlayers > 0){
+            playerManager.addPlayer(new Player());
+            numPlayers--;
+        }
     }
 
 }
