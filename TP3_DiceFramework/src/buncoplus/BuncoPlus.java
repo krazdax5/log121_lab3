@@ -40,7 +40,7 @@ public class BuncoPlus extends Game{
 
     @Override
     public int calculateScoreRound(Player activePlayer) {
-        return rules.calculateScore(activePlayer,diceManager);
+        return rules.calculateScore(activePlayer,diceManager,numRounds);
     }
 
     @Override
