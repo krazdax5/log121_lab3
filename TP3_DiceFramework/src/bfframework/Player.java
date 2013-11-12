@@ -20,7 +20,7 @@ public class Player implements Comparable<Player>{
     /**
      * Score du joueur
      */
-    private int score;
+    private int score = 0;
 
     /**
      * Constructeur par default
@@ -101,6 +101,11 @@ public class Player implements Comparable<Player>{
         else
             return 0;
 
+    }
+
+
+    public void addScore(int score) {
+        this.score += score;
     }
 
 }
