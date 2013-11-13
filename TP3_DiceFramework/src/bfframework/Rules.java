@@ -10,6 +10,8 @@ public interface Rules {
 
     public int calculateScore(DiceManager diceList, int roundNumber);
 
+    public Player findWinner(PlayerManager playerManager);
+
     public boolean donneLaMain();
 
 }

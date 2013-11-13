@@ -3,6 +3,7 @@ package tests;
 import bfframework.Dice;
 import bfframework.DiceManager;
 import bfframework.Rules;
+import buncoplus.BuncoPlus;
 import buncoplus.BuncoPlusRules;
 import org.junit.Test;
 
@@ -65,6 +66,30 @@ public class BuncoPlusRulesTest {
         diceManager.getDice(2).setActiveFace(3);
 
         assert theRules.calculateScore(diceManager,3) == 6;
+
+    }
+
+    @Test
+    public void testFindWinner() throws Exception {
+
+        BuncoPlus theGame = BuncoPlus.createGame(5, 3, 6);
+
+        // Joue une partie reguliere avec des Math.random afin de verifier que findWinner fonctionne correctement
+        theGame.startGame();
+
+        // Si compareTo retourne 0, alors le premier de la liste correspond bien au gagnant de la partie
+        assert theGame.findWinner().compareTo(theGame.getPlayer(0)) == 0;
+        // S'assure que la liste est bien en ordre.
+        // Les joueurs peuvent avoir le meme score s'ils sont chanceux ...
+        assert theGame.getPlayer(0).compareTo(theGame.getPlayer(1)) == 1 ||
+                theGame.getPlayer(0).compareTo(theGame.getPlayer(1)) == 0;
+        assert theGame.getPlayer(1).compareTo(theGame.getPlayer(2)) == 1 ||
+                theGame.getPlayer(1).compareTo(theGame.getPlayer(2)) == 0;
+        assert theGame.getPlayer(2).compareTo(theGame.getPlayer(3)) == 1 ||
+                theGame.getPlayer(2).compareTo(theGame.getPlayer(3)) == 0;
+        assert theGame.getPlayer(3).compareTo(theGame.getPlayer(4)) == 1 ||
+                theGame.getPlayer(3).compareTo(theGame.getPlayer(4)) == 0;
+
 
     }
 

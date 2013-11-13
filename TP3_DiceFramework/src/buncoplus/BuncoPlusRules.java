@@ -144,6 +144,10 @@ public class BuncoPlusRules implements Rules {
         return score;
     }
 
+    public Player findWinner(PlayerManager playerManager) {
+        return playerManager.findWinner();
+    }
+
     public boolean donneLaMain() {
         return donneLaMain;
     }

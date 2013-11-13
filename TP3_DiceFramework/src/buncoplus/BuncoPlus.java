@@ -102,7 +102,7 @@ public class BuncoPlus extends Game{
      */
     @Override
     public Player findWinner() {
-        return playerManager.findWinner();
+        return rules.findWinner(playerManager);
     }
 
     /**
@@ -133,7 +133,7 @@ public class BuncoPlus extends Game{
 
     /**
      * UTILISATION UNIQUE DANS LES TESTS
-     * 
+     *
      * M&eacute;thode qui retourne le joueur &agrave; l'index
      * envoy&eacute; en parametre du PlayerManager
      *
