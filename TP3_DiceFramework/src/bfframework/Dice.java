@@ -34,18 +34,28 @@ public class Dice implements Comparable<Dice>{
      * Constructeur par defaut.<br/>
      * Initialise la valeur de numFaces et de activeFace a null.
      */
-    public Dice() {}
+    private Dice() {}
 
     /**
-     * Constructeur par copie d'attribut.<br/>
+     * Constructeur priv&eacute; par copie d'attribut.<br/>
      * On lui envoie en parametres le nombre de face desire et
      * on lui assigne 1 comme la face actuelle
      *
      * @param numFaces   le nombre de faces desirees pour le dé.
      */
-    public Dice(int numFaces) {
+    private Dice(int numFaces) {
         this.numFaces = numFaces;
         this.activeFace = 1;
+    }
+
+    /**
+     * M&eacute;thode factory qui permet la creation d'un nouveau d&eacute;,
+     * puisque le constructeur est priv&eacute; selon le patron de conception
+     * @param numFaces  Le nombre de faces du d&eacute;
+     * @return          Le nouveau d&eacute; qui a &eacute;t&eacute; cr&eacute;&eacute;
+     */
+    public static Dice createDice(int numFaces) {
+        return new Dice(numFaces);
     }
 
     /**

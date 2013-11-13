@@ -1,5 +1,7 @@
 package bfframework;
 
+import java.util.Comparator;
+
 /**
  * Classe joueur
  *
@@ -20,26 +22,42 @@ public class Player implements Comparable<Player>{
     /**
      * Score du joueur
      */
-    private int score = 0;
+    private int score;
 
     /**
-     * Constructeur par default
+     * Constructeur priv&eacute; par default
      * Initialise les valeurs du nom, du numero et du score du joueur a null
      */
-    public Player(){}
+    private Player(){}
 
     /**
-     * Constructeur de la classe Player
+     * Constructeur priv&eacute; de la classe Player
      * Celui-ci instancie les valeurs du nom, du numéro ainsi que
      * le score du joueurs avec celles envoyées en paramètres.
      * @param name      Le pseudonyme du joueur
      * @param number    Le numero du joueur
      * @param score     Le score initial du joueur
      */
-    public Player(String name, int number, int score){
+    private Player(String name, int number, int score){
         this.name = name;
         this.number = number;
         this.score = score;
+    }
+
+    public static Player createPlayer() {
+        return new Player();
+    }
+
+    /**
+     * M&eacute;thode factory qui permet la cr&eacute;ation de d&eacute; puisque le
+     * constructeur est priv&eacute; selon le patron de conception.
+     * @param name      Le nom du joueur
+     * @param number    Le num&eacute;ro du joueur
+     * @param score     Le score initial du joueur
+     * @return          Le joueur qui a &eacute;t&eacute; cr&eacute;&eacute;.
+     */
+    public static Player createPlayer(String name, int number, int score) {
+        return new Player(name, number, score);
     }
 
     /**
@@ -103,7 +121,10 @@ public class Player implements Comparable<Player>{
 
     }
 
-
+    /**
+     * M&eacute;thode qui permet d'ajouter un score au score du joueur.
+     * @param score le score &agrave; ajouter.
+     */
     public void addScore(int score) {
         this.score += score;
     }

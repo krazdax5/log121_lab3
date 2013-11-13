@@ -8,9 +8,8 @@ package bfframework;
  */
 public interface Rules {
 
-    public int calculateScore(Player activePlayer, DiceManager diceList);
+    public int calculateScore(DiceManager diceList, int roundNumber);
 
-    public Player findWinner();
+    public boolean donneLaMain();
 
-    public void playRound();
 }

@@ -14,14 +14,14 @@ import org.junit.Test;
 public class PlayerTest {
     @Test
     public void testGetName() throws Exception {
-        Player testPlayer = new Player();
+        Player testPlayer = Player.createPlayer();
         testPlayer.setName("Jacob");
         assert testPlayer.getName() == "Jacob";
     }
 
     @Test
     public void testGetScore() throws Exception {
-        Player testPlayer = new Player();
+        Player testPlayer = Player.createPlayer();
         testPlayer.setScore(200);
         assert testPlayer.getScore() == 200;
     }
@@ -29,9 +29,9 @@ public class PlayerTest {
     @Test
     public void testCompareTo() throws Exception {
 
-        Player player1 = new Player("Player 1", 1, 5); // score = 5
-        Player player2 = new Player("Player 2", 2, 10); // score = 10
-        Player player3 = new Player("Player 3", 3, 5); // score = 5
+        Player player1 = Player.createPlayer("Player 1", 1, 5); // score = 5
+        Player player2 = Player.createPlayer("Player 2", 2, 10); // score = 10
+        Player player3 = Player.createPlayer("Player 3", 3, 5); // score = 5
 
         // Cas ou le player envoye en parametre a un plus grand score que le player actuel.
         assert (player1.compareTo(player2) == -1);

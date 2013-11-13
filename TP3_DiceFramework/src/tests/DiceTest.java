@@ -14,7 +14,7 @@ public class DiceTest {
 
     @Test
     public void testRoll() throws Exception {
-        Dice testDice = new Dice(6);
+        Dice testDice = Dice.createDice(6);
 
         int resultat = testDice.roll();
 
@@ -25,9 +25,9 @@ public class DiceTest {
     public void testCompareTo() throws Exception {
 
         // Par defaut la face active est a 1.
-        Dice dice1 = new Dice(6);
-        Dice dice2 = new Dice(6);
-        Dice dice3 = new Dice(6);
+        Dice dice1 = Dice.createDice(6);
+        Dice dice2 = Dice.createDice(6);
+        Dice dice3 = Dice.createDice(6);
 
         // Verifie que la methode compareTo fonctionne dans les deux sens
         assert (dice1.compareTo(dice2) == dice2.compareTo(dice1));

@@ -16,8 +16,8 @@ public class DiceManagerTest {
     public void testAddDice() throws Exception{
         DiceManager diceManager = new DiceManager();
 
-        Dice oneFaceDice = new Dice(1);
-        Dice twoFacesDice = new Dice(2);
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
 
         assert oneFaceDice == diceManager.addDice(oneFaceDice);
         assert twoFacesDice == diceManager.addDice(twoFacesDice);
@@ -30,8 +30,8 @@ public class DiceManagerTest {
     public void testRemoveDice() throws Exception{
         DiceManager diceManager = new DiceManager();
 
-        Dice oneFaceDice = new Dice(1);
-        Dice twoFacesDice = new Dice(2);
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
 
         diceManager.addDice(oneFaceDice);
         diceManager.addDice(twoFacesDice);
@@ -44,9 +44,9 @@ public class DiceManagerTest {
     public void testNextDice() throws Exception{
         DiceManager diceManager = new DiceManager();
 
-        Dice oneFaceDice = new Dice(1);
-        Dice twoFacesDice = new Dice(2);
-        Dice threeFacesDice = new Dice(3);
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
+        Dice threeFacesDice = Dice.createDice(3);
 
         diceManager.addDice(oneFaceDice);
         diceManager.addDice(twoFacesDice);

@@ -1,7 +1,5 @@
 package bfframework;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * Classe bfframework.PlayerManager
@@ -77,6 +75,12 @@ public class PlayerManager {
             return playersList.get(position);
         else
             return null;
+    }
+
+
+    public Player findWinner() {
+        Collections.sort(this.playersList, Collections.reverseOrder());
+        return getFirstPlayer();
     }
 
 }

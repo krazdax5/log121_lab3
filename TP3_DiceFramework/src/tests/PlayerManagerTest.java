@@ -18,7 +18,7 @@ public class PlayerManagerTest {
     public void testAddPlayer() throws Exception{
         PlayerManager playerManager = new PlayerManager();
 
-        Player john = new Player("John", 0, 0);
+        Player john = Player.createPlayer("John", 0, 0);
         Player playerAdded = playerManager.addPlayer(john);
 
         assert playerAdded == john;
@@ -29,8 +29,8 @@ public class PlayerManagerTest {
     public void testRemovePlayer() throws Exception{
         PlayerManager playerManager = new PlayerManager();
 
-        Player john = new Player("John", 0, 0);
-        Player joe = new Player("Joe", 0, 0);
+        Player john = Player.createPlayer("John", 0, 0);
+        Player joe = Player.createPlayer("Joe", 0, 0);
 
         playerManager.addPlayer(john);
         playerManager.addPlayer(joe);
@@ -44,9 +44,9 @@ public class PlayerManagerTest {
     public void testNextPlayer() throws Exception{
         PlayerManager playerManager = new PlayerManager();
 
-        Player john = new Player("John", 0, 0);
-        Player joe = new Player("Joe", 1, 0);
-        Player jeff = new Player("Jeff", 2, 0);
+        Player john = Player.createPlayer("John", 0, 0);
+        Player joe = Player.createPlayer("Joe", 1, 0);
+        Player jeff = Player.createPlayer("Jeff", 2, 0);
 
         playerManager.addPlayer(john);
         playerManager.addPlayer(joe);
@@ -62,9 +62,9 @@ public class PlayerManagerTest {
     public void testGetFirstPlayer() throws Exception {
         PlayerManager playerManager = new PlayerManager();
 
-        Player john = new Player("John", 0, 0);
-        Player joe = new Player("Joe", 1, 0);
-        Player jeff = new Player("Jeff", 2, 0);
+        Player john = Player.createPlayer("John", 0, 0);
+        Player joe = Player.createPlayer("Joe", 1, 0);
+        Player jeff = Player.createPlayer("Jeff", 2, 0);
 
         playerManager.addPlayer(john);
         playerManager.addPlayer(joe);
@@ -83,9 +83,9 @@ public class PlayerManagerTest {
     public void testGetPlayer() throws Exception {
         PlayerManager playerManager = new PlayerManager();
 
-        Player john = new Player("John", 0, 0);
-        Player joe = new Player("Joe", 1, 0);
-        Player jeff = new Player("Jeff", 2, 0);
+        Player john = Player.createPlayer("John", 0, 0);
+        Player joe = Player.createPlayer("Joe", 1, 0);
+        Player jeff = Player.createPlayer("Jeff", 2, 0);
 
         playerManager.addPlayer(john);
         playerManager.addPlayer(joe);
@@ -95,6 +95,24 @@ public class PlayerManagerTest {
         assert playerManager.getPlayer(0) == john;
         assert playerManager.getPlayer(2) == jeff;
         assert playerManager.getPlayer(1) == joe;
+
+    }
+
+    @Test
+    public void testFindWinner() throws Exception {
+        
+        PlayerManager playerManager = new PlayerManager();
+
+        Player john = Player.createPlayer("John", 0, 20);
+        Player joe = Player.createPlayer("Joe", 1, 50);
+        Player jeff = Player.createPlayer("Jeff", 2, 100);
+
+        playerManager.addPlayer(john);
+        playerManager.addPlayer(joe);
+        playerManager.addPlayer(jeff);
+
+        assert jeff == playerManager.findWinner();
+
 
     }
 }

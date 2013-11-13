@@ -24,34 +24,35 @@ public abstract class Game {
      * @param numDices Le nombre de dés
      * @param numFacesPerDice Le nombre de faces par dé
      */
-    public abstract void createGame(int numPlayers, int numDices, int numFacesPerDice);
+    public static Game createGame(int numPlayers, int numDices, int numFacesPerDice) {
+        return null;
+    }
 
     /**
      * Calcule le pointage de la ronde.
      * @return Le pointage de la ronde.
      */
-    public abstract int calculateScoreRound(Player activePlayer);
+    public abstract int calculateScoreRound(int roundNumber);
 
     /**
      * Joue la ronde pour tous les joueurs.
      */
-    public abstract void playRound();
+    public abstract void playRound(int roundNumber);
 
     /**
-     * Commence la partie
-     *
-     * @param numPlayers        Le nombre de joueurs
-     * @param numDices          Le nombre de d&eacute;s
-     * @param numFacesPerDice   Le nombre de faces par d&eacute;s
+     * Commence la partie. (M&eacute;thode Template)
      */
-    public void startGame(int numPlayers, int numDices, int numFacesPerDice) {
-        if(gameState == GameStates.EARLY)
-            createGame(numPlayers, numDices, numFacesPerDice);
-
-        gameState = GameStates.STARTED;
-        playGame();
+    public void startGame() {
+        if(gameState != GameStates.CREATED) {
+            gameState = GameStates.STARTED;
+            playGame();
+            findWinner();
+        }
     }
 
+    /**
+     * M&eacute;thode qui contient l'impl&eacute;mentation d'une partie d'un jeu de d&eacute;s
+     */
     public abstract void playGame();
 
     /**
