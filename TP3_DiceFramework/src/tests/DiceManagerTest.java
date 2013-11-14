@@ -16,8 +16,8 @@ public class DiceManagerTest {
     public void testAddDice() throws Exception{
         DiceManager diceManager = new DiceManager();
 
-        Dice oneFaceDice = new Dice(1);
-        Dice twoFacesDice = new Dice(2);
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
 
         assert oneFaceDice == diceManager.addDice(oneFaceDice);
         assert twoFacesDice == diceManager.addDice(twoFacesDice);
@@ -30,8 +30,8 @@ public class DiceManagerTest {
     public void testRemoveDice() throws Exception{
         DiceManager diceManager = new DiceManager();
 
-        Dice oneFaceDice = new Dice(1);
-        Dice twoFacesDice = new Dice(2);
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
 
         diceManager.addDice(oneFaceDice);
         diceManager.addDice(twoFacesDice);
@@ -44,9 +44,9 @@ public class DiceManagerTest {
     public void testNextDice() throws Exception{
         DiceManager diceManager = new DiceManager();
 
-        Dice oneFaceDice = new Dice(1);
-        Dice twoFacesDice = new Dice(2);
-        Dice threeFacesDice = new Dice(3);
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
+        Dice threeFacesDice = Dice.createDice(3);
 
         diceManager.addDice(oneFaceDice);
         diceManager.addDice(twoFacesDice);
@@ -55,6 +55,70 @@ public class DiceManagerTest {
         assert diceManager.nextDice() == oneFaceDice;
         assert diceManager.nextDice() == twoFacesDice;
         assert diceManager.nextDice() == threeFacesDice;
-//        assert diceManager.nextDice() == oneFaceDice;
+        assert diceManager.nextDice() == null;
+    }
+
+    @Test
+    public void testPreviousDice() throws Exception {
+        DiceManager diceManager = new DiceManager();
+
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
+        Dice threeFacesDice = Dice.createDice(3);
+
+        diceManager.addDice(oneFaceDice);
+        diceManager.addDice(twoFacesDice);
+        diceManager.addDice(threeFacesDice);
+
+        // Verifie que lorsque l'iterateur est au premier de,
+        // la methode retourne null
+        assert diceManager.previousDice() == null;
+
+        diceManager.nextDice(); // oneFaceDice
+        diceManager.nextDice(); // twoFaceDice
+        diceManager.nextDice(); // threeFaceDice
+        diceManager.nextDice(); // null : cas limite
+        diceManager.nextDice(); // null : cas limite
+
+        assert diceManager.previousDice() == threeFacesDice;
+        assert diceManager.previousDice() == twoFacesDice;
+        assert diceManager.previousDice() == oneFaceDice;
+
+        assert diceManager.previousDice() == null; // cas limite
+
+    }
+
+    @Test
+    public void testGetFirstDice() throws Exception {
+
+        DiceManager diceManager = new DiceManager();
+
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
+        Dice threeFacesDice = Dice.createDice(3);
+        Dice fourFacesDice = Dice.createDice(4);
+
+        diceManager.addDice(oneFaceDice);
+        diceManager.addDice(twoFacesDice);
+        diceManager.addDice(threeFacesDice);
+
+        // Bouge la position de l'iterateur et ajoute un de.
+        diceManager.nextDice();
+        diceManager.nextDice();
+        diceManager.nextDice();
+        diceManager.nextDice();
+        diceManager.nextDice();
+        diceManager.nextDice();
+        diceManager.addDice(fourFacesDice);
+        diceManager.nextDice();
+        diceManager.nextDice();
+        diceManager.previousDice();
+        diceManager.nextDice();
+
+        assert diceManager.getFirstDice() == oneFaceDice;
+        diceManager.nextDice();
+        assert diceManager.nextDice() == twoFacesDice;
+
+
     }
 }
