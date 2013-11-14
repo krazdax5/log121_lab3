@@ -47,6 +47,7 @@ public abstract class Game {
             gameState = GameStates.STARTED;
             playGame();
             findWinner();
+            gameState = GameStates.FINISHED;
         }
     }
 
@@ -73,4 +74,12 @@ public abstract class Game {
      * @param numPlayers    Le nombre de joueurs
      */
     public abstract void createPlayer(int numPlayers);
+
+    public DiceManager getDiceManager() {
+        return diceManager;
+    }
+
+    public PlayerManager getPlayerManager() {
+        return playerManager;
+    }
 }

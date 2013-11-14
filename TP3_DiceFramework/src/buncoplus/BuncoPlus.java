@@ -80,7 +80,7 @@ public class BuncoPlus extends Game{
                 newScore=0;
                 diceManager.rollAllDices();
                 newScore = calculateScoreRound(roundNumber);
-                playerManager.getPlayer(playerNumber).addScore(newScore);
+                playerManager.nextPlayer().addScore(newScore);
             } while(rules.donneLaMain());
         }
 
@@ -129,19 +129,6 @@ public class BuncoPlus extends Game{
         for(int playerNumber = 1; playerNumber <= numPlayers; playerNumber++){
             playerManager.addPlayer(Player.createPlayer("", playerNumber, 0));
         }
-    }
-
-    /**
-     * UTILISATION UNIQUE DANS LES TESTS
-     *
-     * M&eacute;thode qui retourne le joueur &agrave; l'index
-     * envoy&eacute; en parametre du PlayerManager
-     *
-     * @param index La position du joueur dans la liste du PlayerManager
-     * @return      Le joueur a la position envoy&eacute; en param&egrave;tre.
-     */
-    public Player getPlayer(int index) {
-        return playerManager.getPlayer(index);
     }
 
 }

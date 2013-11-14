@@ -2,6 +2,9 @@ package buncoplus;
 
 import bfframework.*;
 
+import java.util.Collections;
+import java.util.LinkedList;
+
 /**
  * Classe qui implemente l'interface Rules pour les regles du jeu Bunco+
  *
@@ -11,21 +14,37 @@ import bfframework.*;
  * @author Pierre-Luc Landry
  * 2013-11-08 : Creation de la classe et implementation des methodes
  * @author Mathieu Lachance LACM14059305
- * 2013-11-11 : Correction du calcul du score
+ * 2013-11-11 : Correction du calcul du score.
+ * 2013-11-14 : Ajout de la methode findWinner().
  */
 
 
 public class BuncoPlusRules implements Rules {
 
+    /**
+     * Constante utilis&eacute;e afin d'aider la comparaison lors du calcul du score
+     */
     final int EQUALS = 0;
 
+    /**
+     * Variable bool&eacute;ene qui permet de donner la main au joueur suivant ou non.
+     * True : le joueur passe la main au suivant
+     * False : le joueur continu de jouer
+     */
     private boolean donneLaMain;
 
-    public int calculateScore(DiceManager diceList, int roundNumber) {
+    /**
+     * M&eacute;thode qui permet de calculer le score selon la ronde et la face active des &eacute;s.
+     * @param diceManager   Le DiceManager qui contient tous les d&eacute;s.
+     * @param roundNumber   Le num&eacute;ro de la ronde
+     * @return  Le pointage de la ronde.
+     */
+    public int calculateScore(DiceManager diceManager, int roundNumber) {
 
-        Dice dice1 = diceList.getDice(0);
-        Dice dice2 = diceList.getDice(1);
-        Dice dice3 = diceList.getDice(2);
+        Dice dice1 = diceManager.getFirstDice();
+        diceManager.nextDice();
+        Dice dice2 = diceManager.nextDice();
+        Dice dice3 = diceManager.nextDice();
 
         int score = 0;
         donneLaMain = true;
@@ -52,102 +71,26 @@ public class BuncoPlusRules implements Rules {
             }
         }
 
-//        else if(dice1.compareTo(dice2) == EQUALS) {
-//            if(dice1.getActiveFace() == roundNumber)
-//                score += roundNumber;
-//            if(dice2.getActiveFace() == roundNumber)
-//                score += roundNumber;
-//        }
-//        else if(dice1.compareTo(dice3) == EQUALS) {
-//            if(dice1.getActiveFace() == roundNumber)
-//                score += roundNumber;
-//            if(dice3.getActiveFace() == roundNumber)
-//                score += roundNumber;
-//        }
-//        else if(dice2.getActiveFace() == EQUALS) {
-//            if(dice2.getActiveFace() == roundNumber)
-//                score += roundNumber;
-//            if(dice3.getActiveFace() == roundNumber)
-//                score += roundNumber;
-//        }
-
-
-//        //Si les des 1 et 2 ont la meme face active
-//        if(dice1.compareTo(dice2)==0){
-//
-//            //Si le premier de a le meme chiffre que le tour, le deuxieme aussi
-//            if(dice1.getActiveFace()==roundNumber){
-//
-//                //Si les des 2 et 3 ont la meme face active, alors BUNCO
-//                if(dice2.compareTo(dice3)==0)
-//                    score=21;
-//                // Sinon pour chaque de avec la meme face, on additionne le numero de la ronde.
-//                else
-//                    score=2*roundNumber;
-//
-//            }
-//        }
-//
-//        //Si les des 1 et 2 sont differents
-//        else {
-//
-//            //Si le de 1 a le meme chiffre que le tour
-//            if(dice1.getActiveFace()==roundNumber)
-//                score+=roundNumber;
-//
-//                //Si le de 2 a le meme chiffre que le tour
-//            else if(dice2.getActiveFace()==roundNumber)
-//                score+=roundNumber;
-//
-//        }
-//
-//        //Si les des 1 et 3 ont la meme face active
-//        if(dice1.compareTo(dice3)==0){
-//
-//            //Si la face active du premier de a le meme chiffre que le tour
-//            if(dice1.getActiveFace()==roundNumber)
-//                score+=2*roundNumber;
-//
-//        }
-//        //Si le premier de est different du troisieme de
-//        else {
-//
-//            //Si la face active du de 1 est egale au chiffre du tour
-//            if(dice1.getActiveFace()==roundNumber)
-//                score+=roundNumber;
-//
-//                //Si la face active du de 3 est egale au chiffre du tour
-//            else if(dice3.getActiveFace()==roundNumber)
-//                score+=roundNumber;
-//        }
-//
-//        //Si les des 2 et 3 ont la meme face active
-//        if(dice2.compareTo(dice3)==0){
-//
-//            if(dice2.getActiveFace()==roundNumber)
-//                score+=2*roundNumber;
-//
-//        }
-//        //Si les de 2 et 3 ont une face active differente
-//        else {
-//
-//            //Si la face active 2 est egale au chiffre du tour
-//            if(dice2.getActiveFace()==roundNumber)
-//                score+=roundNumber;
-//
-//                //Si la face active 3 est egale au chiffre du tour
-//            else if(dice3.getActiveFace()==roundNumber)
-//                score+=roundNumber;
-//
-//        }
-
         return score;
     }
 
+    /**
+     * M&eacute;thode qui permet de classer la liste de joueurs en ordre d&eacute;croissant de score
+     * @return  Le premier joueur de la liste, c'est-&agrave;-dire celui avec le plus grand score.
+     */
     public Player findWinner(PlayerManager playerManager) {
-        return playerManager.findWinner();
+        LinkedList<Player> playersList = new LinkedList<Player>();
+        for(int numberOfPlayer = 0; numberOfPlayer < playerManager.getNumberOfPlayers(); numberOfPlayer++) {
+            playersList.add(playerManager.nextPlayer());
+        }
+        Collections.sort(playersList, Collections.reverseOrder());
+        return playersList.peek();
     }
 
+    /**
+     * M&eacute;thode qui permet de savoir si le joueur doit donner la main au suivant.
+     * @return true s'il doit donner la main, false s'il continu de jouer.
+     */
     public boolean donneLaMain() {
         return donneLaMain;
     }
