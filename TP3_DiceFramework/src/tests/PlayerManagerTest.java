@@ -11,6 +11,7 @@ import bfframework.Player;
  * 2013-11-10 : Ajout des tests
  * @auhtor Mathieu Lachance LACM14059305
  * 2013-11-11 : Ajout de testGetFirstPlayer et testGetPlayer. Modification de testNextPlayer.
+ * 2013-11-13 : Ajout de testPreviousPlayer. testGetPlayer est supprime.
  */
 public class PlayerManagerTest {
 
@@ -108,4 +109,27 @@ public class PlayerManagerTest {
 
     }
 
+    @Test
+    public void testClone() throws Exception {
+
+        PlayerManager playerManager = new PlayerManager();
+
+        Player john = Player.createPlayer("John", 0, 0);
+        Player joe = Player.createPlayer("Joe", 1, 0);
+        Player jeff = Player.createPlayer("Jeff", 2, 0);
+
+        playerManager.addPlayer(john);
+        playerManager.addPlayer(joe);
+        playerManager.addPlayer(jeff);
+
+        PlayerManager playerManagerCloned = playerManager.clone();
+
+        assert playerManager.getFirstPlayer() == playerManagerCloned.getFirstPlayer();
+        assert playerManager.nextPlayer()  == john;
+        assert playerManagerCloned.nextPlayer() == john;
+        assert playerManager.nextPlayer() == playerManagerCloned.nextPlayer();
+        assert playerManager.nextPlayer() == playerManagerCloned.nextPlayer();
+
+
+    }
 }

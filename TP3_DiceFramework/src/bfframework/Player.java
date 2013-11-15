@@ -8,6 +8,7 @@ import java.util.Comparator;
  * @author Jacob Marcil
  * 2013-11-01 : Creation de la classe
  * 2013-11-05 : Implémentation des méthodes et attributs de la classe
+ * 2013-11-05 : Impl&eacute;mentation de la m&eacute;thode compareTo()
  */
 public class Player implements Comparable<Player>{
 

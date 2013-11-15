@@ -111,5 +111,23 @@ public class DiceManager {
         }
     }
 
+    /**
+     * Mutateur priv&eacute; qui est utilis&eacute; lors du clonage du DiceManager.
+     * @param dicesList La nouvelle liste.
+     */
+    private void setDicesList(ArrayList<Dice> dicesList) {
+        this.dicesList = dicesList;
+        this.diceIterator = dicesList.listIterator();
+    }
+
+    /**
+     * Retourne une copie de l'objet actuel.
+     * @return La copie du DiceManager actuel.
+     */
+    public DiceManager clone() {
+        DiceManager cloneDiceList = new DiceManager();
+        cloneDiceList.setDicesList(this.dicesList);
+        return cloneDiceList;
+    }
 
 }

@@ -4,7 +4,7 @@ import bfframework.*;
 
 /**
  * Classe qui implemente le jeu Bunco+.
- * Hérite de la classe Game selon le patron Methode Template.
+ * Hérite de la classe AbstractGame selon le patron Methode Template.
  *
  *        Historique des modifications
  ************************************************
@@ -15,7 +15,7 @@ import bfframework.*;
  *              ainsi que l'ajout de la m&eacute;thode factory
  *
  */
-public class BuncoPlus extends Game{
+public class BuncoPlus extends AbstractGame {
 
     /**
      * Le nombre de rondes selon le nombre de faces de d&eacute;s

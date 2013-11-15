@@ -113,4 +113,23 @@ public class PlayerManager {
         return numberOfPlayers;
     }
 
+    /**
+     * Mutateur priv&eacute; qui est utilis&eacute; lors du clonage du PlayerManager.
+     * @param playersList La nouvelle liste.
+     */
+    private void setPlayersList(LinkedList<Player> playersList) {
+        this.playersList = playersList;
+        this.playerIterator = playersList.listIterator();
+    }
+
+    /**
+     * Retourne une copie de l'objet actuel.
+     * @return La copie du PlayerManager actuel.
+     */
+    public PlayerManager clone() {
+        PlayerManager clonePlayerManager = new PlayerManager();
+        clonePlayerManager.setPlayersList(this.playersList);
+        return clonePlayerManager;
+    }
+
 }

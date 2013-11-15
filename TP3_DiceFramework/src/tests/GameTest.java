@@ -1,10 +1,9 @@
 package tests;
 
 import org.junit.Test;
-import bfframework.Game;
 
 /**
- * Classe de tests unitaires qui teste toutes les methodes de la classe Game.
+ * Classe de tests unitaires qui teste toutes les methodes de la classe AbstractGame.
  *
  * @author Charles Levesque LEVC27109107
  * 2013-11-10 : ajout des tests

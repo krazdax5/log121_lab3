@@ -11,7 +11,7 @@ package bfframework;
  * 2013-11-07 : Ajout des méthode.
  * 2013-11-10 : Implémentation des méthodes
  */
-public abstract class Game {
+public abstract class AbstractGame {
 
     protected GameStates gameState = GameStates.EARLY;
     protected PlayerManager playerManager;
@@ -24,7 +24,7 @@ public abstract class Game {
      * @param numDices Le nombre de dés
      * @param numFacesPerDice Le nombre de faces par dé
      */
-    public static Game createGame(int numPlayers, int numDices, int numFacesPerDice) {
+    public static AbstractGame createGame(int numPlayers, int numDices, int numFacesPerDice) {
         return null;
     }
 
@@ -75,11 +75,19 @@ public abstract class Game {
      */
     public abstract void createPlayer(int numPlayers);
 
+    /**
+     * Accesseur du DiceManager du jeu.
+     * @return  le DiceManager du jeu.
+     */
     public DiceManager getDiceManager() {
-        return diceManager;
+        return diceManager.clone();
     }
 
+    /**
+     * Accesseur du PlayerManager du jeu.
+     * @return  Le PlayerManager du jeu.
+     */
     public PlayerManager getPlayerManager() {
-        return playerManager;
+        return playerManager.clone();
     }
 }

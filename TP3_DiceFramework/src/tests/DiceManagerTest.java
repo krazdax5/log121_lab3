@@ -9,6 +9,8 @@ import bfframework.Dice;
  *
  * @author Charles Levesque LEVC27109107
  * 2013-11-10 : Ajout des tests
+ * @author Mathieu Lachance
+ * 2013-11-13 : Ajout des tests : previousDice() et getFirstDice()
  */
 public class DiceManagerTest {
 
@@ -118,6 +120,31 @@ public class DiceManagerTest {
         assert diceManager.getFirstDice() == oneFaceDice;
         diceManager.nextDice();
         assert diceManager.nextDice() == twoFacesDice;
+
+
+    }
+
+    @Test
+    public void testClone() throws Exception {
+
+        DiceManager diceManager = new DiceManager();
+
+        Dice oneFaceDice = Dice.createDice(1);
+        Dice twoFacesDice = Dice.createDice(2);
+        Dice threeFacesDice = Dice.createDice(3);
+        Dice fourFacesDice = Dice.createDice(4);
+
+        diceManager.addDice(oneFaceDice);
+        diceManager.addDice(twoFacesDice);
+        diceManager.addDice(threeFacesDice);
+
+        DiceManager diceManagerCloned = diceManager.clone();
+
+        assert diceManager.getFirstDice() == diceManagerCloned.getFirstDice();
+        assert diceManager.nextDice() == oneFaceDice;
+        assert diceManagerCloned.nextDice() == oneFaceDice;
+        assert diceManager.nextDice() == diceManagerCloned.nextDice();
+        assert diceManager.nextDice() == diceManagerCloned.nextDice();
 
 
     }

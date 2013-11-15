@@ -79,6 +79,7 @@ public class BuncoPlusRulesTest {
         theGame.startGame();
 
         PlayerManager playerManager = theGame.getPlayerManager();
+
         // Si compareTo retourne 0, alors le premier correspond bien au gagnant de la partie
         assert theGame.findWinner().compareTo(playerManager.getFirstPlayer()) == 0;
 
@@ -88,21 +89,12 @@ public class BuncoPlusRulesTest {
         Player player4 = playerManager.nextPlayer();
         Player player5 = playerManager.nextPlayer();
 
+        // S'assure que la liste est bien en ordre.
+        // Les joueurs peuvent avoir le meme score s'ils sont chanceux ...
         assert player1.getScore() >= player2.getScore();
         assert player2.getScore() >= player3.getScore();
         assert player3.getScore() >= player4.getScore();
         assert player4.getScore() >= player5.getScore();
-        // S'assure que la liste est bien en ordre.
-        // Les joueurs peuvent avoir le meme score s'ils sont chanceux ...
-//        assert theGame.getPlayer(0).compareTo(theGame.getPlayer(1)) == 1 ||
-//                theGame.getPlayer(0).compareTo(theGame.getPlayer(1)) == 0;
-//        assert theGame.getPlayer(1).compareTo(theGame.getPlayer(2)) == 1 ||
-//                theGame.getPlayer(1).compareTo(theGame.getPlayer(2)) == 0;
-//        assert theGame.getPlayer(2).compareTo(theGame.getPlayer(3)) == 1 ||
-//                theGame.getPlayer(2).compareTo(theGame.getPlayer(3)) == 0;
-//        assert theGame.getPlayer(3).compareTo(theGame.getPlayer(4)) == 1 ||
-//                theGame.getPlayer(3).compareTo(theGame.getPlayer(4)) == 0;
-
 
     }
 
