@@ -67,13 +67,13 @@ public abstract class AbstractGame {
      * @param numDices      Le nombre de d&eacutes;s
      * @param numberOfFaces Le nombre de face par d&eacute;s
      */
-    public abstract void createDices(int numDices, int numberOfFaces);
+    protected abstract void createDices(int numDices, int numberOfFaces);
 
     /**
      * Instancie les joueurs d'un jeu de d&eacute;s
      * @param numPlayers    Le nombre de joueurs
      */
-    public abstract void createPlayer(int numPlayers);
+    protected abstract void createPlayer(int numPlayers);
 
     /**
      * Accesseur du DiceManager du jeu.

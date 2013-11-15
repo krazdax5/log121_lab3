@@ -81,7 +81,7 @@ public class BuncoPlus extends AbstractGame {
                 diceManager.rollAllDices();
                 newScore = calculateScoreRound(roundNumber);
                 playerManager.nextPlayer().addScore(newScore);
-            } while(rules.donneLaMain());
+            } while(rules.nextToPlay());
         }
 
     }
@@ -112,7 +112,7 @@ public class BuncoPlus extends AbstractGame {
      * @param numFacesPerDice   Le nombre de faces par d&eacute;s
      */
     @Override
-    public void createDices(int numDices, int numFacesPerDice) {
+    protected void createDices(int numDices, int numFacesPerDice) {
         while (numDices > 0){
             diceManager.addDice(Dice.createDice(numFacesPerDice));
             numDices--;
@@ -125,7 +125,7 @@ public class BuncoPlus extends AbstractGame {
      * @param numPlayers    Le nombre de joueurs
      */
     @Override
-    public void createPlayer(int numPlayers) {
+    protected void createPlayer(int numPlayers) {
         for(int playerNumber = 1; playerNumber <= numPlayers; playerNumber++){
             playerManager.addPlayer(Player.createPlayer("", playerNumber, 0));
         }

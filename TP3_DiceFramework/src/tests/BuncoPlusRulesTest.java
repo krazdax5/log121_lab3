@@ -6,7 +6,7 @@ import buncoplus.BuncoPlusRules;
 import org.junit.Test;
 
 /**
- * Classe de tests unitaires pour calculateScore() et donneLaMain()
+ * Classe de tests unitaires pour calculateScore() et nextToPlay()
  *
  * @author Mathieu Lachance LACM14059305
  * 2013-11-12 : Creation et implementation des tests
@@ -116,7 +116,7 @@ public class BuncoPlusRulesTest {
 
         theRules.calculateScore(diceManager, 3);
 
-        assert theRules.donneLaMain() == true;
+        assert theRules.nextToPlay() == true;
 
         // Si les trois des sont identiques,
         // mais ne correspondent pas avec le numero de la ronde,
@@ -127,7 +127,7 @@ public class BuncoPlusRulesTest {
         diceManager.nextDice().setActiveFace(3);
         theRules.calculateScore(diceManager,4);
 
-        assert theRules.donneLaMain() == false;
+        assert theRules.nextToPlay() == false;
 
         // Si un des des correspond avec le numero de la ronde,
         // on ne passe pas la main.
@@ -138,7 +138,7 @@ public class BuncoPlusRulesTest {
 
         theRules.calculateScore(diceManager, 3);
 
-        assert theRules.donneLaMain() == false;
+        assert theRules.nextToPlay() == false;
 
         // Si deux des des correspondent avec le numero de la ronde,
         // on ne passe pas la main.
@@ -149,7 +149,7 @@ public class BuncoPlusRulesTest {
 
         theRules.calculateScore(diceManager, 3);
 
-        assert theRules.donneLaMain() == false;
+        assert theRules.nextToPlay() == false;
 
         // Si les trois des sont differents et
         // qu'aucun d'entre eux correspond avec le numero de la ronde,
@@ -161,7 +161,7 @@ public class BuncoPlusRulesTest {
 
         theRules.calculateScore(diceManager, 4);
 
-        assert theRules.donneLaMain() == true;
+        assert theRules.nextToPlay() == true;
 
     }
 }

@@ -31,7 +31,7 @@ public class BuncoPlusRules implements Rules {
      * True : le joueur passe la main au suivant
      * False : le joueur continu de jouer
      */
-    private boolean donneLaMain;
+    private boolean nextToPlay;
 
     /**
      * M&eacute;thode qui permet de calculer le score selon la ronde et la face active des &eacute;s.
@@ -47,26 +47,26 @@ public class BuncoPlusRules implements Rules {
         Dice dice3 = diceManager.nextDice();
 
         int score = 0;
-        donneLaMain = true;
+        nextToPlay = true;
 
         if(dice1.compareTo(dice2) == EQUALS && dice2.compareTo(dice3) == EQUALS && dice1.getActiveFace() == roundNumber)
             score = 21;
 
         else if(dice1.compareTo(dice2) == EQUALS && dice2.compareTo(dice3) == EQUALS && dice1.getActiveFace() != roundNumber){
             score = 5;
-            donneLaMain = false;
+            nextToPlay = false;
         }
         else{
             if(dice1.getActiveFace() == roundNumber) {
-                donneLaMain = false;
+                nextToPlay = false;
                 score += roundNumber;
             }
             if(dice2.getActiveFace() == roundNumber) {
-                donneLaMain = false;
+                nextToPlay = false;
                 score += roundNumber;
             }
             if(dice3.getActiveFace() == roundNumber){
-                donneLaMain = false;
+                nextToPlay = false;
                 score += roundNumber;
             }
         }
@@ -91,8 +91,8 @@ public class BuncoPlusRules implements Rules {
      * M&eacute;thode qui permet de savoir si le joueur doit donner la main au suivant.
      * @return true s'il doit donner la main, false s'il continu de jouer.
      */
-    public boolean donneLaMain() {
-        return donneLaMain;
+    public boolean nextToPlay() {
+        return nextToPlay;
     }
 
 }
